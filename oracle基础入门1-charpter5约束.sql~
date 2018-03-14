@@ -168,29 +168,5 @@ create table userinfo_f2(
 
 --在修改表时添加外键约束
 --语法
-alter table table_name add constraint constraint_name foreign key(column_name references table_name(column_name) [on delete cascade];
---实例
-create table userinfo_f4(
-    id varchar2(10) primary key,
-    username varchar2(20),
-    typeid_new varchar2(20)
-);
-
-alter table userinfo_f4 
-add constraint fk_typeid_alter foreign key(typeid_new) references typeinfo(typeid) on delete cascade;
 
 --删除外键约束
---第一种,禁用外键约束
---语法:
-alter table table_name disable|enable constraint constraint_name;
-(通过user_constraints数据字典可以查看数据表中约束的名字,类型,状态等信息,
-select constraint_name, constraint_type, status from user_constraints where table_name='USERINFO_F4';)  
---实例
-alter table userinfo_f4 disable constraint FK_TYPEID_ALTER;
-alter table userinfo_f4 enable constraint FK_TYPEID_ALTER;
-
---第二种,删除外键
---语法
-alter table table_name drop constraint constraint_name;
---实例
-alter table userinfo_f4 drop constraint FK_TYPEID_ALTER;
